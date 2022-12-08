@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 6604, 3431, -2967.69, 3987.68, -3663, 3848, -680, 2921, 2514, 2700, 16.9999, -1116, 2645, 684, -272, 589, -3346, -1036, -17172, 13589, -17499, -22876, -11601, -16257, -11523, 13122, -12150, -16919, 19479, -20868, 14903, -16993, 14281, -4234, 19526, 21526, 14623, 14289, 14339, 1056, 12534, 1295, 12185, 10568, 6476, 5601, 12438, -4361, -1361, 10672, -1722, 9889, 1547, 9721, 12169, 10571, 6462, 5601, 1663, 7512, -4137, 6101, -1850, 7749, -1755, 9892, -1500, 10616, -8915, 10319, -820, 1032, -908, -4774, -832, -3006, -3201, -2985, -8629, -6109, -971, -6490, -8820, -13989, 12343, -13862, 2556, -6712, -829, -3006, -894, -4453, 2504, -4565, 292, -2972, -4149, 3537, 14390, 21806, -17219, 20966, 2512, 2261, 2646, 683, -710, 2905, -3647, 3841, 18.9999, -1120 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 9, 10, 11, 12 ), PoolIntArray( 13, 10, 14, 15 ), PoolIntArray( 16, 15, 14, 17, 18, 19 ), PoolIntArray( 20, 21, 22, 0, 23 ), PoolIntArray( 24, 25, 26, 27 ), PoolIntArray( 28, 27, 26, 29 ), PoolIntArray( 30, 28, 29, 31 ), PoolIntArray( 32, 33, 34 ), PoolIntArray( 8, 7, 35 ), PoolIntArray( 36, 37, 38, 39 ), PoolIntArray( 40, 39, 41, 42, 43 ), PoolIntArray( 44, 45, 46, 47 ), PoolIntArray( 31, 32, 34, 30 ), PoolIntArray( 30, 34, 39, 48 ), PoolIntArray( 49, 50, 9, 12, 18, 17 ), PoolIntArray( 23, 16, 19, 20 ), PoolIntArray( 0, 4, 51, 52, 23 ), PoolIntArray( 8, 35, 53, 54, 48 ), PoolIntArray( 8, 48, 39, 38 ), PoolIntArray( 40, 36, 39 ), PoolIntArray( 43, 42, 23, 52, 46 ), PoolIntArray( 46, 52, 55, 47 ) ]
+outlines = [ PoolVector2Array( -17499, -22876, 19479, -20868, 19526, 21526, 14390, 21806, -17219, 20966, -17172, 13589, -17499, -22876, -11601, -16257, -11523, 13122, 14623, 14289, 14339, 1056, 12534, 1295, 12185, 10568, 6476, 5601, 6604, 3431, -2967.69, 3987.68, -3663, 3848, -680, 2921, 2514, 2700, 2512, 2261, 2646, 683, 18.9999, -1120, 292, -2972, -829, -3006, -894, -4453, 2504, -4565, 2556, -6712, -971, -6490, -908, -4774, -832, -3006, -3201, -2985, -3346, -1036, 16.9999, -1116, 2645, 684, -272, 589, -820, 1032, -710, 2905, -3647, 3841, -4149, 3537, -4137, 6101, 6462, 5601, 12169, 10571, -1361, 10672, -1722, 9889, 1547, 9721, 1663, 7512, -1850, 7749, -1755, 9892, -1500, 10616, -8915, 10319, -8629, -6109, -8820, -13989, 12343, -13862, 12438, -4361, 14281, -4234, 14903, -16993, -12150, -16919 ) ]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -2762, -11924 )
+scale = Vector2( 2.71857, 2.23544 )
+
+[node name="Floor" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( 17.1857, -4.94176 )
+scale = Vector2( 2.71857, 2.23544 )
+color = Color( 0.0784314, 0.12549, 0.607843, 0.686275 )
+polygon = PoolVector2Array( 1859, 9, 0, 4, -10, 1223, 1849, 1213 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+position = Vector2( -1634, -980 )
+scale = Vector2( 1, 1 )
+navpoly = SubResource( 1 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 17.1857, -4.94176 )
+scale = Vector2( 2.71857, 2.23544 )
+Speed = 60.0
+TargetPath = NodePath("../Player")
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Wall3" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 10942, 1199 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall9" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -12314, 2777 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall10" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -12314, 2777 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall11" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -12188, -6791 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall12" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -12188, -6791 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall13" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -12107, -16167 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall14" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 18372, -3600 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall21" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 18284, 5835 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall15" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 18324, -13212 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall16" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 18304, -22723 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall20" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 10044, -22870 )
+rotation = -1.54554
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall22" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 549, -22978 )
+rotation = -1.54554
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall23" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -9198, -23086 )
+rotation = -1.54554
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall6" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 10957, -15068 )
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall7" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -4411, -2274 )
+rotation = -1.59643
+scale = Vector2( 1.94202, 5.87821 )
+
+[node name="Wall24" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -3038, 8500 )
+rotation = -1.59643
+scale = Vector2( 1.94202, 5.87821 )
+
+[node name="Wall25" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -2105, -5782 )
+rotation = -1.59643
+scale = Vector2( 1.94202, 5.87821 )
+
+[node name="Wall26" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -1969, 1574 )
+rotation = -1.59643
+scale = Vector2( 1.94202, 5.87821 )
+
+[node name="Wall19" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -5007, 4616 )
+rotation = -1.59643
+scale = Vector2( 1.94202, 21.6115 )
+
+[node name="Wall4" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 1003, 9909 )
+scale = Vector2( 15.334, 4.99719 )
+
+[node name="Wall17" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 793, -17088 )
+scale = Vector2( 15.334, 4.99719 )
+
+[node name="Wall18" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -10659, -17423 )
+scale = Vector2( 15.334, 4.99719 )
+
+[node name="Wall8" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -10632, 9805 )
+scale = Vector2( 15.334, 4.99719 )

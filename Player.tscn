@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.cs" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 154.0
+height = 0.0
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+Speed = 10000.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -431, -312 )
+scale = Vector2( 0.82, 0.85974 )
+polygon = PoolVector2Array( 324, 187, 330.488, 539.698, 724.39, 547.84, 724, 182 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 12, 12 )
